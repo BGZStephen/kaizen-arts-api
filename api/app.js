@@ -28,8 +28,8 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-app.use(errorUtils.logErrors);
-app.use(errorUtils.errorHandler);
+// app.use(errorUtils.logErrors);
+// app.use(errorUtils.errorHandler);
 
 const port = 3000;
 app.listen(port, () => {
