@@ -5,6 +5,7 @@ const cors = require('cors');
 const express = require('express');
 const path = require('path');
 const winston = require('winston');
+const errorUtils = require('./helpers/error-utils');
 
 const app = express()
 
@@ -27,9 +28,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/', require('./routes/public'))
+
 // error handlers
-// app.use(errorUtils.logErrors);
-// app.use(errorUtils.errorHandler);
+app.use(errorUtils.logErrors);
+app.use(errorUtils.errorHandler);
 
 const port = 3000;
 app.listen(port, () => {

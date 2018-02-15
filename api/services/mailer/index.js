@@ -55,21 +55,17 @@ async function sendEmail(params) {
  * @param {String} contactFormParams.name submitters name
  * @param {String} contactFormParams.message submitters message
  */
-async function contactFormEmail(contactFormParams) {
-	if (!message) {
-		throw new Error('Message required for contact form submission');
-	}
-
-	const emailParams = {
+async function contactForm(params) {
+	const email = {
 		to: 'sjw948@gmail.com',
 		from: `stephen@stephenwright.co.uk`,
 		subject: `A new contact form message from ${message.name}`,
 		template: 'contact-form.ejs',
-		data: message,
+		data: params,
 	}
-	return await sendEmail(params);
+	return await sendEmail(email);
 }
 
 module.exports = {
-	contactFormEmail,
+	contactForm,
 };
